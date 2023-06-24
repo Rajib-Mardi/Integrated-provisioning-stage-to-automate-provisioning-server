@@ -1,0 +1,11 @@
+.idea/*
+target
+
+# local .terraform dir
+terraform/.terraform/*
+terraform/.terraform.lock.hcl
+
+
+# tf state files
+terraform/*.tfstate
+terraform/*.tfstate.*
