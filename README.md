@@ -1,4 +1,16 @@
--CI-CD-with-Terraform
+CI_CD with Terraform
+
+<p float="left">
+<img src="https://github.com/appwebtech/EKS-Cluster-With-Terraform/blob/main/images/tf-logo.png" width="100">
+
+
+<img src="https://github.com/appwebtech/Ansible-Integration-Jenkins/blob/main/images/aws-logo.png" width="120">
+
+
+<img src="https://github.com/appwebtech/Deploy-Docker-With-Terraform/blob/main/images/docker.png" width="100">
+</p>
+
+----
 
 ## Demo Project: 
 * Complete CI/CD with Terraform
@@ -161,5 +173,106 @@ output "ec2_public_ip" {
 
 ## Create entry-script.sh file to install docker, docker-compose and start containers through docker-compose command
  
+## Adjust Jenkinsfile to include provision terraform and deployment stage
 
+
+```jenkins 
+       stage('provision server') {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
+                TF_VAR_env_prefix = 'test'
+            }
+            steps {
+                script {
+                    dir('terraform') {
+                        sh "terraform init"
+                        sh "terraform apply --auto-approve"
+                        EC2_PUBLIC_IP = sh(
+                            script: "terraform output ec2_public_ip",
+                            returnStdout: true
+                        ).trim()
+                    }
+                }
+            }
+        }
+
+
+
+`````
+
+       stage('deploy') {
+            environment {
+                DOCKER_CREDS = credentials('docker-hub-repo')
+            }
+            steps {
+                script {
+                   echo "waiting for EC2 server to initialize" 
+                   sleep(time: 90, unit: "SECONDS") 
+
+                   echo 'deploying docker image to EC2...'
+                   echo "${EC2_PUBLIC_IP}"
+
+                   echo 'deploying docker image to EC2'
+                   def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME} ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
+                   def ec2Instance = "ec2-user@${EC2_PUBLIC_IP}"
+
+                   sshagent(['server-ssh-key']) {
+                       sh "scp -o StrictHostKeyChecking=no server-cmds.sh ${ec2Instance}:/home/ec2-user"
+                       sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ec2Instance}:/home/ec2-user"
+                       sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${shellCmd}"
+                    }
+
+                }   
+            }
+        }
+
+
+
+## Include docker login to be able to pull Docker Images from private Docker repository
+* docker login on ec2 server so ec2 server can authenticate with docker repository.
+* We need  the login user and password in the script to execute on the EC2 server.
+
+![server-cmds sh - java-maven-app - Visual Studio Code 25-06-2023 21_12_23](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/f8bfaf7b-9e71-4ea1-bca6-0b3a40014b6b)
+
+
+* We can get the login user and password in the Jenkinsfile from the Docker credentials that we have created in Jenkins and use as the environment variables  in  the  jenkinsfile.
+
+
+
+![Jenkinsfile - java-maven-app - Visual Studio Code 25-06-2023 21_15_08](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/3c9c2361-fd29-4e1e-b2ab-ad7ec0dd23cc)
+
+
+ ## Execute CI/CD pipeline
+
+* As we can see, the pipeline has been successfully run.
+
+![java-maven-app » featture_jenkins-sshagent-terraform #13 Console  Jenkins  - Google Chrome 21-06-2023 23_50_24](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/d79daf4f-629e-4315-a54d-06d9079fa7bd)
+
+ ## We can see if the container is running by sshing into the server.
+
+ ![ec2-user@ip-10-0-10-212_~ 21-06-2023 23_49_59](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/0d1cd521-fcc8-485d-90cf-3d57546f1457)
+
+## In the AWS console, we can see that a vpc, subnet, security groups, route table, internet gateway, and instances have  been created.
+
+   
+
+
+
+![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_56_28](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/c66d45d9-a0a6-4589-9d7c-6ad5504c8c9d)
+
+
+![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_56_43](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/836318b8-5f2f-47e9-b54a-da0e4c94002c)
+
+
+ ![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_56_54](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/3c0a1df3-aafa-4464-a190-fe0d01440012)
+
+
+ 
+![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_57_03](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/7f00e8cf-4e5e-4448-b32e-0ae4619edb5b)
+
+
+![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_57_15](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/e8bbcbe0-9a4b-4f7f-91f9-3e936dee6ba4)
+
+![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_57_37](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/c4e1ae05-7278-460c-bb7c-141981ed2ac9)
 
