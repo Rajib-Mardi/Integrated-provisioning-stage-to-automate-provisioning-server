@@ -276,3 +276,42 @@ output "ec2_public_ip" {
 
 ![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_57_37](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/c4e1ae05-7278-460c-bb7c-141981ed2ac9)
 
+----------------------------------------
+
+## Demo Project: 
+* Configure a Shared Remote State
+## Technologiesused: 
+* Terraform, AWS S3
+## Project Description:
+* Configure Amazon S3 as remote storage for Terraform state
+
+## create AWS S3 Bucket
+
+* In terraform main.tf, configure the s3 bucket to store the state.tfstate file data.
+
+```terraform
+terraform {
+  required_version = ">= 0.12"
+  backend "s3" {
+    bucket = "java-app-bucket-1"
+    key = "myapp/state.tfstate"
+    region = "ap-southeast-1"
+  }
+}
+```
+
+
+![S3 bucket - Google Chrome 26-06-2023 00_08_55](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/e1d01112-23ef-4278-879e-3bdd6f046271)
+
+* Enable the bucket version
+
+## Run the CI-CD pipeline 
+
+![featture_jenkins-sshagent-terraform  java-maven-app   Jenkins  and 7 more pages - Profile 1 - Microsoft​ Edge 22-06-2023 20_55_51](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/af0deda8-dc5a-4cd5-b735-25723bac1513)
+
+
+## We can see the Terraform state file has been created successfully.
+
+
+![EC2 Management Console - Google Chrome 22-06-2023 21_18_49](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/f238c3d6-30fe-479a-9a0f-cbb316eab7c6)
+
