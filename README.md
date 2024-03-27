@@ -249,8 +249,7 @@ output "ec2_public_ip" {
 
 ![java-maven-app » featture_jenkins-sshagent-terraform #13 Console  Jenkins  - Google Chrome 21-06-2023 23_50_24](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/d79daf4f-629e-4315-a54d-06d9079fa7bd)
 
- ## We can see if the container is running by sshing into the server.
-
+ ## docker container is running in the server 
  ![ec2-user@ip-10-0-10-212_~ 21-06-2023 23_49_59](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/0d1cd521-fcc8-485d-90cf-3d57546f1457)
 
 ## In the AWS console, we can see that a vpc, subnet, security groups, route table, internet gateway, and instances have  been created.
