@@ -226,6 +226,17 @@ output "ec2_public_ip" {
                 }   
             }
         }
+     ```
+
+
+    
+#### Provision Stage in Jenkinsfile:
+
+* Inside the scripts, execute Terraform commands. Switch to the Terraform directory, execute terraform init, and terraform apply --auto-approve. Add environment variables for Terraform as credentials so that the AWS provider grabs these environment variables to connect to the AWS access key ID and AWS secret access key. Define the TF var for env-prefix and set it to "test." Retrieve the EC2 public IP address using Terraform output and store it in the variable EC2_PUBLIC_IP.
+
+####  Deploy Stage in Jenkinsfile:
+
+* Set environment variables for Docker Hub repository credentials using Jenkins credentials plugin. Inside the stage, execute the deployment process by waiting for the EC2 server to initialize, retrieving the EC2 public IP address, defining shell commands to execute on the EC2 instance, handling SSH authentication with provided SSH key using sshagent, copying necessary files to the EC2 instance using SCP, and executing shell commands remotely on the EC2 instance using SSH.
 
 
 
