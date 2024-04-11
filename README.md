@@ -253,8 +253,7 @@ output "ec2_public_ip" {
 * We can get the login user and password in the Jenkinsfile from the Docker credentials that we have created in Jenkins and use as the environment variables  in  the  jenkinsfile.
 
 
-
-![Jenkinsfile - java-maven-app - Visual Studio Code 25-06-2023 21_15_08](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/3c9c2361-fd29-4e1e-b2ab-ad7ec0dd23cc)
+<img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/e5f79e4c-a9be-45c6-b298-c53bd2e684d6" width="800">
 
 
  ## Execute CI/CD pipeline
