@@ -253,7 +253,7 @@ output "ec2_public_ip" {
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/a294ce35-18dd-445a-9268-171fae8abab1" width="800">
 
 
- #### docker container is running in the server 
+ #### Docker container is running on the server.
 
  
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/1a0517de-e8b3-455f-97bb-d1d2323f2d6c" width="800">
