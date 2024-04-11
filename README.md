@@ -272,12 +272,9 @@ output "ec2_public_ip" {
 
 
  <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/6656fc49-4641-42e6-a49a-d822f09cd242" width="800">
+
+<img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/7e53965e-2c81-48f3-b4f8-16768a23c8bb" width="800">
  
-![248577242-c66d45d9-a0a6-4589-9d7c-6ad5504c8c9d](https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/6656fc49-4641-42e6-a49a-d822f09cd242)
-
-
-![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_56_43](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/836318b8-5f2f-47e9-b54a-da0e4c94002c)
-
 
  ![Your VPCs _ VPC Management Console - Google Chrome 21-06-2023 23_56_54](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/3c0a1df3-aafa-4464-a190-fe0d01440012)
 
