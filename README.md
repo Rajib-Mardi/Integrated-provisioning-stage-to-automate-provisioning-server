@@ -262,8 +262,6 @@ output "ec2_public_ip" {
 
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/a294ce35-18dd-445a-9268-171fae8abab1" width="800">
 
-![248569877-d79daf4f-629e-4315-a54d-06d9079fa7bd](https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/a294ce35-18dd-445a-9268-171fae8abab1)
-
 
  ## docker container is running in the server 
  ![ec2-user@ip-10-0-10-212_~ 21-06-2023 23_49_59](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/0d1cd521-fcc8-485d-90cf-3d57546f1457)
