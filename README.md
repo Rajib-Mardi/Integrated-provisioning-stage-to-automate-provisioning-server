@@ -246,8 +246,11 @@ output "ec2_public_ip" {
 * docker login on ec2 server so ec2 server can authenticate with docker repository.
 * We need  the login user and password in the script to execute on the EC2 server.
 
-![server-cmds sh - java-maven-app - Visual Studio Code 25-06-2023 21_12_23](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/f8bfaf7b-9e71-4ea1-bca6-0b3a40014b6b)
+<img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/503e33ed-90ef-4ca3-898f-38bb0e6d270a" width="48">
 
+
+
+![248570462-f8bfaf7b-9e71-4ea1-bca6-0b3a40014b6b](https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/503e33ed-90ef-4ca3-898f-38bb0e6d270a)
 
 * We can get the login user and password in the Jenkinsfile from the Docker credentials that we have created in Jenkins and use as the environment variables  in  the  jenkinsfile.
 
