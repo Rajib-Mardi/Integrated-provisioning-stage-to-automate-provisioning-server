@@ -4,7 +4,9 @@
 * Complete CI/CD with Terraform
 ### Technologies used: 
 * Terraform, Jenkins, Docker, AWS, Git, Java, Maven, Linux, Docker Hub
-### Project Description: Integrate provisioning stage into complete CI/CD Pipeline to automate provisioning server instead of deploying to an existing server
+### Project Description: 
+
+* Integrate provisioning stage into complete CI/CD Pipeline to automate provisioning server instead of deploying to an existing server
 
 #### Create SSH key pair for EC2 Instance
 * After creating the key pair, use the key pair to create new credentials in Jenkins with ssh as the user name as an ec2-user with a private key, and associate the key with instances when creating them with Terraform.
