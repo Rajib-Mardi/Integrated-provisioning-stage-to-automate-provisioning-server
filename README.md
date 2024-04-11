@@ -21,7 +21,8 @@ CI_CD with Terraform
 ## Create SSH key pair for EC2 Instance
 * After creating the key pair, use the key pair to create new credentials in Jenkins with ssh as the user name as an ec2-user with a private key, and associate the key with instances when creating them with Terraform.
 
-![Key pairs _ EC2 Management Console - Google Chrome 24-06-2023 23_14_38](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/7304dd9e-a6f3-4b36-89b6-387b4c1487d5)
+<img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/af4d2bf3-0637-4440-887b-16d238198ac4" width="800">
+
 
 ## Created Credential in Jenkins
 * Create credentials in Jenkins as an SSH user with a private key, name the credentials as username ec2-user with a private key, and associate the key with instances when creating them with Terraform.
