@@ -1,5 +1,3 @@
-CI_CD with Terraform
-
 ----
 
 ## Demo Project: 
