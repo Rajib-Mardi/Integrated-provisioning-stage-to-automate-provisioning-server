@@ -27,8 +27,9 @@ CI_CD with Terraform
 ## Created Credential in Jenkins
 * Create credentials in Jenkins as an SSH user with a private key, name the credentials as username ec2-user with a private key, and associate the key with instances when creating them with Terraform.
 
+<img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/39ca28c4-2225-4611-a43b-9035d162f007" width="800">
 
-![New credentials  Jenkins  and 6 more pages - Profile 1 - Microsoft​ Edge 22-06-2023 19_22_14](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/d54e80ae-98b3-4629-9956-f49f2e00cdc5)
+
 
 
 ## Install Terraform inside Jenkins Container
