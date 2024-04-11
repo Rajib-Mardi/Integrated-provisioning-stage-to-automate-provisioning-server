@@ -1,18 +1,18 @@
-----
 
-## Demo Project: 
+
+### Demo Project: 
 * Complete CI/CD with Terraform
-## Technologies used: 
+### Technologies used: 
 * Terraform, Jenkins, Docker, AWS, Git, Java, Maven, Linux, Docker Hub
-## Project Description: Integrate provisioning stage into complete CI/CD Pipeline to automate provisioning server instead of deploying to an existing server
+### Project Description: Integrate provisioning stage into complete CI/CD Pipeline to automate provisioning server instead of deploying to an existing server
 
-## Create SSH key pair for EC2 Instance
+#### Create SSH key pair for EC2 Instance
 * After creating the key pair, use the key pair to create new credentials in Jenkins with ssh as the user name as an ec2-user with a private key, and associate the key with instances when creating them with Terraform.
 
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/af4d2bf3-0637-4440-887b-16d238198ac4" width="800">
 
 
-## Created Credential in Jenkins
+#### Created Credential in Jenkins
 * Create credentials in Jenkins as an SSH user with a private key, name the credentials as username ec2-user with a private key, and associate the key with instances when creating them with Terraform.
 
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/39ca28c4-2225-4611-a43b-9035d162f007" width="800">
@@ -20,7 +20,7 @@
 
 
 
-## Install Terraform inside Jenkins Container
+#### Install Terraform inside Jenkins Container
 
 * SSH  into our digitalOcean droplet , inside the jenkins container as root user and install  the terraform
  
@@ -42,8 +42,8 @@ apt-get update && apt-get install terraform
 terraform -v
 ```
 
-## Create Terraform configuration files to provision an ec2 server
-*Make a folder called terraform that contains the terraform configuration files.
+#### Create Terraform configuration files to provision an ec2 server
+* Make a folder called terraform that contains the terraform configuration files.
 * Make a folder called terraform where the terraform configuration files will be located.
 * In the main.tf file, create a vpc with 1 subnet, an internet gateway, default route tables, default security groups, and EC2 instances.
 
@@ -161,9 +161,9 @@ output "ec2_public_ip" {
 ```
 
 
-## Create entry-script.sh file to install docker, docker-compose and start containers through docker-compose command
+#### Create entry-script.sh file to install docker, docker-compose and start containers through docker-compose command
  
-## Adjust Jenkinsfile to include provision terraform and deployment stage
+#### Adjust Jenkinsfile to include provision terraform and deployment stage
 
 
 ```jenkins 
@@ -230,7 +230,7 @@ output "ec2_public_ip" {
 
 
 
-## Include docker login to be able to pull Docker Images from private Docker repository
+#### Include docker login to be able to pull Docker Images from private Docker repository
 * docker login on ec2 server so ec2 server can authenticate with docker repository.
 * We need  the login user and password in the script to execute on the EC2 server.
 
@@ -244,19 +244,19 @@ output "ec2_public_ip" {
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/e5f79e4c-a9be-45c6-b298-c53bd2e684d6" width="800">
 
 
- ## Execute CI/CD pipeline
+ #### Execute CI/CD pipeline
 
 * As we can see, the pipeline has been successfully run.
 
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/a294ce35-18dd-445a-9268-171fae8abab1" width="800">
 
 
- ## docker container is running in the server 
+ #### docker container is running in the server 
 
  
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/1a0517de-e8b3-455f-97bb-d1d2323f2d6c" width="800">
 
-## In the AWS console, we can see that a vpc, subnet, security groups, route table, internet gateway, and instances have  been created.
+#### In the AWS console, we can see that a vpc, subnet, security groups, route table, internet gateway, and instances have  been created.
 
 
  <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/6656fc49-4641-42e6-a49a-d822f09cd242" width="800">
@@ -272,43 +272,4 @@ output "ec2_public_ip" {
 
 <img src="https://github.com/Rajib-Mardi/Complete-CI-CD-Pipeline-with-EKS-and-AWS-ECR/assets/96679708/3cc8d71e-8878-4ec9-9d73-61417af2931d" width="800">
 
-
-----------------------------------------
-
-## Demo Project: 
-* Configure a Shared Remote State
-## Technologiesused: 
-* Terraform, AWS S3
-## Project Description:
-* Configure Amazon S3 as remote storage for Terraform state
-
-## create AWS S3 Bucket
-
-* In terraform main.tf, configure the s3 bucket to store the state.tfstate file data.
-
-```terraform
-terraform {
-  required_version = ">= 0.12"
-  backend "s3" {
-    bucket = "java-app-bucket-1"
-    key = "myapp/state.tfstate"
-    region = "ap-southeast-1"
-  }
-}
-```
-
-
-![S3 bucket - Google Chrome 26-06-2023 00_08_55](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/e1d01112-23ef-4278-879e-3bdd6f046271)
-
-* Enable the bucket version
-
-## Run the CI-CD pipeline 
-
-![featture_jenkins-sshagent-terraform  java-maven-app   Jenkins  and 7 more pages - Profile 1 - Microsoft​ Edge 22-06-2023 20_55_51](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/af0deda8-dc5a-4cd5-b735-25723bac1513)
-
-
-## We can see the Terraform state file has been created successfully.
-
-
-![EC2 Management Console - Google Chrome 22-06-2023 21_18_49](https://github.com/Rajib-Mardi/Demo-Project-3-CI-CD-with-Terraform/assets/96679708/f238c3d6-30fe-479a-9a0f-cbb316eab7c6)
 
